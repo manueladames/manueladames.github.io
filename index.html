@@ -7,87 +7,75 @@
   <title>Manuel Adames | QA Automation Engineer</title>
   <meta name="description" content="QA Automation Engineer specializing in Cypress, Playwright, Stagehand, Selenium RPA, API Testing, and CI/CD." />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Manuel Adames | QA Automation Engineer" />
-  <meta property="og:description" content="Automation portfolio: Cypress, Playwright, Stagehand, Selenium RPA, API testing, CI/CD." />
-  <meta property="og:type" content="website" />
-
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
-<body>
-  <!-- Top glow -->
+<body id="top">
 
-  <header class="container header">
-    <a class="brand" href="#top" id="top">
-      <span class="dot"></span>
-      <span>Manuel Adames</span>
-    </a>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-dot"></span>
+        Manuel Adames
+      </a>
 
-    <nav class="nav">
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </nav>
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main class="container">
+
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-left">
-        <div class="badge">
-          <span class="pulse"></span>
-          QA Automation Engineer
-        </div>
+      <div class="hero-grid">
 
-        <h1>
-          I build reliable <span class="grad">web automation</span> and
-          <span class="grad">end-to-end testing</span>.
-        </h1>
-
-        <p class="sub">
-          QA Automation Engineer (4+ years) building reliable E2E automation with Cypress, Playwright, and Stagehand.
-          Strong in API testing, Selenium-based RPA, DOM/XPath/CSS selector strategy, and CI/CD with Jenkins + Git.
-        </p>
-
-        <p class="proof">
-          Focus: reducing flaky tests, expanding automation coverage, and speeding up release feedback.
-        </p>
-
-        <div class="cta">
-          <a class="btn primary" href="https://linkedin.com/in/manueladames" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-          <a class="btn" href="https://github.com/manueladames" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          <a class="btn ghost" href="./assets/Manuel_Adames_CV.pdf" target="_blank" rel="noopener noreferrer">
-            Download CV
-          </a>
-        </div>
-
-        <div class="chips">
-          <span class="chip">Cypress</span>
-          <span class="chip">Playwright</span>
-          <span class="chip">Stagehand</span>
-          <span class="chip">Selenium RPA</span>
-          <span class="chip">API Testing</span>
-          <span class="chip">Jenkins</span>
-          <span class="chip">TypeScript</span>
-        </div>
-      </div>
-
-      <div class="hero-right">
-        <div class="terminal">
-          <div class="terminal-top">
-            <span class="t-dot red"></span>
-            <span class="t-dot yellow"></span>
-            <span class="t-dot green"></span>
-            <span class="terminal-title">automation.log</span>
+        <div>
+          <div class="badge">
+            <span class="pill-dot"></span>
+            QA Automation Engineer
           </div>
-          <pre class="code"><code>
-$ npx playwright test
+
+          <h1>
+            I build reliable <span class="accent">web automation</span> and
+            <span class="accent">end-to-end testing</span>.
+          </h1>
+
+          <p class="lede">
+            QA Automation Engineer (4+ years) building reliable E2E automation with Cypress, Playwright, and Stagehand.
+            Strong in API testing, Selenium-based RPA, DOM/XPath/CSS selector strategy, and CI/CD with Jenkins + Git.
+          </p>
+
+          <div class="actions">
+            <a class="btn primary" href="https://linkedin.com/in/manueladames" target="_blank">LinkedIn</a>
+            <a class="btn" href="https://github.com/manueladames" target="_blank">GitHub</a>
+            <a class="btn" href="./assets/Manuel_Adames_CV.pdf" target="_blank">Download CV</a>
+          </div>
+
+          <div class="tag-row">
+            <span class="tag">Cypress</span>
+            <span class="tag">Playwright</span>
+            <span class="tag">Stagehand</span>
+            <span class="tag">Selenium RPA</span>
+            <span class="tag">API Testing</span>
+            <span class="tag">Jenkins</span>
+            <span class="tag">TypeScript</span>
+          </div>
+        </div>
+
+        <!-- Right card -->
+        <div class="card card-pad">
+          <div class="card-title">
+            <span>automation.log</span>
+            <div class="window-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+
+<pre class="mono"><code>$ npx playwright test
 ✓ auth/login.spec.ts
 ✓ cart/add-to-cart.spec.ts
 ✓ smoke/navigation.spec.ts
@@ -99,193 +87,102 @@ $ node stagehand-extract.ts
 
 $ npm run cypress:run
 ✓ 42 passing
-✓ stabilized selectors → fewer flakes
-          </code></pre>
+✓ fewer flakes
+</code></pre>
         </div>
 
-        <div class="metrics">
-          <div class="metric">
-            <div class="metric-num">E2E</div>
-            <div class="metric-label">Automation</div>
-          </div>
-          <div class="metric">
-            <div class="metric-num">API</div>
-            <div class="metric-label">Testing</div>
-          </div>
-          <div class="metric">
-            <div class="metric-num">CI/CD</div>
-            <div class="metric-label">Jenkins</div>
-          </div>
-        </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="section section-tight-top">
-      <div class="section-head">
-        <h2>Featured Projects</h2>
-      </div>
+    <section id="projects" class="section">
+      <h2>Featured Projects</h2>
 
       <div class="grid">
-        <article class="card">
-          <div class="card-top">
-            <span class="tag">Playwright</span>
-            <span class="tag">Selectors</span>
+
+        <div class="card project">
+          <div class="project-top">
+            <div class="chips">
+              <span class="chip">Playwright</span>
+              <span class="chip">Selectors</span>
+            </div>
           </div>
           <h3>Resilient E2E Flows</h3>
-          <p>
-            Automated complex user journeys with stable selector strategy (XPath/CSS), smart waits, and flake reduction.
-          </p>
-          <p class="highlights">
-            <strong>Highlights:</strong> resilient locators, smart waits, reusable helpers/page objects.
-          </p>
-          <div class="card-actions">
-            <a class="link" href="#" onclick="return false;">Repo (add link)</a>
-            <a class="link" href="#" onclick="return false;">Demo (add link)</a>
+          <p>Stable selector strategy, smart waits, flake reduction, reusable helpers.</p>
+          <div class="links">
+            <a class="link" href="#">Repo</a>
+            <a class="link" href="#">Demo</a>
           </div>
-        </article>
+        </div>
 
-        <article class="card">
-          <div class="card-top">
-            <span class="tag">Stagehand</span>
-            <span class="tag">TypeScript</span>
+        <div class="card project">
+          <div class="project-top">
+            <div class="chips">
+              <span class="chip">Stagehand</span>
+              <span class="chip">TypeScript</span>
+            </div>
           </div>
           <h3>Structured Data Extraction</h3>
-          <p>
-            Extracted structured JSON from dynamic apps (nested schema), handling repeated sections and complex forms.
-          </p>
-          <p class="highlights">
-            <strong>Highlights:</strong> nested schema extraction, normalization, JSON file outputs.
-          </p>
-          <div class="card-actions">
-            <a class="link" href="#" onclick="return false;">Repo (add link)</a>
-            <a class="link" href="#" onclick="return false;">Write-up (add link)</a>
+          <p>Nested schema extraction from dynamic apps with JSON output and normalization.</p>
+          <div class="links">
+            <a class="link" href="#">Repo</a>
+            <a class="link" href="#">Write-up</a>
           </div>
-        </article>
+        </div>
 
-        <article class="card">
-          <div class="card-top">
-            <span class="tag">Cypress</span>
-            <span class="tag">E2E</span>
+        <div class="card project">
+          <div class="project-top">
+            <div class="chips">
+              <span class="chip">Cypress</span>
+              <span class="chip">E2E</span>
+            </div>
           </div>
           <h3>Cypress Test Suite</h3>
-          <p>
-            Built maintainable E2E coverage for core flows with reusable helpers, clear assertions, and reporting.
-          </p>
-          <p class="highlights">
-            <strong>Highlights:</strong> reusable commands, clean assertions, regression workflows.
-          </p>
-          <div class="card-actions">
-            <a class="link" href="#" onclick="return false;">Repo (add link)</a>
-            <a class="link" href="#" onclick="return false;">Report (add link)</a>
+          <p>Reusable commands, clean assertions, regression workflows, reporting.</p>
+          <div class="links">
+            <a class="link" href="#">Repo</a>
+            <a class="link" href="#">Report</a>
           </div>
-        </article>
+        </div>
 
-        <article class="card">
-          <div class="card-top">
-            <span class="tag">Jenkins</span>
-            <span class="tag">CI/CD</span>
+        <div class="card project">
+          <div class="project-top">
+            <div class="chips">
+              <span class="chip">Jenkins</span>
+              <span class="chip">CI/CD</span>
+            </div>
           </div>
           <h3>Pipeline Integration</h3>
-          <p>
-            Integrated automated tests into CI for faster feedback and higher release confidence with reliable runs.
-          </p>
-          <p class="highlights">
-            <strong>Highlights:</strong> smoke vs regression split, pipeline gating, reporting.
-          </p>
-          <div class="card-actions">
-            <a class="link" href="#" onclick="return false;">Jenkinsfile (add link)</a>
-            <a class="link" href="#" onclick="return false;">Notes (add link)</a>
+          <p>Integrated tests into CI for faster feedback and reliable release confidence.</p>
+          <div class="links">
+            <a class="link" href="#">Jenkinsfile</a>
+            <a class="link" href="#">Notes</a>
           </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <div class="section-head">
-        <h2>Skills</h2>
-      </div>
-
-      <div class="two-col">
-        <div class="panel">
-          <h3>Automation & Testing</h3>
-          <ul>
-            <li>Cypress (E2E, regression, workflows)</li>
-            <li>Playwright (UI automation, test design)</li>
-            <li>Stagehand (automation + extraction)</li>
-            <li>Selenium-based RPA (web automation)</li>
-            <li>API Testing (Postman/Insomnia)</li>
-          </ul>
         </div>
 
-        <div class="panel">
-          <h3>Engineering & Delivery</h3>
-          <ul>
-            <li>JavaScript / TypeScript</li>
-            <li>SQL (validation / data checks)</li>
-            <li>DOM analysis, XPath/CSS selectors</li>
-            <li>CI/CD with Jenkins</li>
-            <li>GitHub / GitLab</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <div class="section-head">
-        <h2>Experience</h2>
-      </div>
-
-      <div class="timeline">
-        <div class="role">
-          <div class="role-top">
-            <h3>QA & Automation Engineer</h3>
-            <span class="muted">GBH Solutions • 2022 — Present</span>
-          </div>
-          <ul>
-            <li>Built and maintained E2E automation using Cypress, Playwright, and Stagehand.</li>
-            <li>Designed test plans from requirements; managed defects through full lifecycle.</li>
-            <li>Improved testing efficiency by expanding automation coverage and integrating CI workflows (Jenkins).</li>
-          </ul>
-        </div>
-
-        <div class="role">
-          <div class="role-top">
-            <h3>IT Service Dispatcher</h3>
-            <span class="muted">Xplor Solutions / MyITCrew • 2020 — 2022</span>
-          </div>
-          <ul>
-            <li>Ticket triage, incident routing, and cross-team coordination to drive resolution.</li>
-            <li>Supported process improvements for service workflows and response time.</li>
-          </ul>
-        </div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section">
-      <div class="contact">
+      <div class="card contact">
         <div>
           <h2>Let’s connect</h2>
-          <p class="sub">
-            Want to talk QA Automation, Playwright/Cypress, Stagehand projects, or roles?
-          </p>
+          <p>Want to talk QA Automation, Playwright/Cypress, or Stagehand projects?</p>
         </div>
 
         <div class="contact-actions">
-          <a class="btn primary" href="mailto:manuel.adames88@gmail.com">manuel.adames88@gmail.com</a>
-          <a class="btn" href="https://linkedin.com/in/manueladames" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="btn ghost" href="https://github.com/manueladames" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn primary" href="mailto:manuel.adames88@gmail.com">Email Me</a>
+          <a class="btn" href="https://linkedin.com/in/manueladames" target="_blank">LinkedIn</a>
+          <a class="btn" href="https://github.com/manueladames" target="_blank">GitHub</a>
         </div>
       </div>
     </section>
 
     <footer class="footer">
-      <span>© <span id="year"></span> Manuel Adames</span>
-      <span class="muted">Built on GitHub Pages</span>
+      © <span id="year"></span> Manuel Adames
     </footer>
+
   </main>
 
   <script>
@@ -293,5 +190,3 @@ $ npm run cypress:run
   </script>
 </body>
 </html>
-
-
