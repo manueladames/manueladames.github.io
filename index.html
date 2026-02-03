@@ -48,8 +48,12 @@
         </h1>
 
         <p class="sub">
-          4+ years in QA/Automation. Strong with Cypress, Playwright, Stagehand, Selenium-based RPA,
-          API testing, DOM/XPath/CSS selectors, and CI/CD (Jenkins + Git).
+          QA Automation Engineer (4+ years) building reliable E2E automation with Cypress, Playwright, and Stagehand.
+          Strong in API testing, Selenium-based RPA, DOM/XPath/CSS selector strategy, and CI/CD with Jenkins + Git.
+        </p>
+
+        <p class="proof">
+          Focus: reducing flaky tests, expanding automation coverage, and speeding up release feedback.
         </p>
 
         <div class="cta">
@@ -59,8 +63,9 @@
           <a class="btn" href="https://github.com/manueladames" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
-          <!-- Optional: upload your CV PDF to /assets and uncomment -->
-          <!-- <a class="btn ghost" href="./assets/Manuel_Adames_CV.pdf" target="_blank">Download CV</a> -->
+          <a class="btn ghost" href="./assets/Manuel_Adames_CV.pdf" target="_blank" rel="noopener noreferrer">
+            Download CV
+          </a>
         </div>
 
         <div class="chips">
@@ -84,18 +89,18 @@
           </div>
           <pre class="code"><code>
 $ npx playwright test
-✓ login.spec.ts
-✓ checkout-flow.spec.ts
-✓ api-contract.spec.ts
+✓ auth/login.spec.ts
+✓ cart/add-to-cart.spec.ts
+✓ smoke/navigation.spec.ts
 
-$ node stagehand-extract.js
-✓ extracted 11 industries
-✓ normalized 143 classifications
-✓ wrote output.json
+$ node stagehand-extract.ts
+✓ extracted options + xpaths
+✓ validated schema (zod)
+✓ wrote output/industries.json
 
 $ npm run cypress:run
 ✓ 42 passing
-✓ 0 flaky
+✓ stabilized selectors → fewer flakes
           </code></pre>
         </div>
 
@@ -117,7 +122,7 @@ $ npm run cypress:run
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="section">
+    <section id="projects" class="section section-tight-top">
       <div class="section-head">
         <h2>Featured Projects</h2>
         <p>Replace placeholders with your real repos + short demos when you’re ready.</p>
@@ -132,6 +137,9 @@ $ npm run cypress:run
           <h3>Resilient E2E Flows</h3>
           <p>
             Automated complex user journeys with stable selector strategy (XPath/CSS), smart waits, and flake reduction.
+          </p>
+          <p class="highlights">
+            <strong>Highlights:</strong> resilient locators, smart waits, reusable helpers/page objects.
           </p>
           <div class="card-actions">
             <a class="link" href="#" onclick="return false;">Repo (add link)</a>
@@ -148,6 +156,9 @@ $ npm run cypress:run
           <p>
             Extracted structured JSON from dynamic apps (nested schema), handling repeated sections and complex forms.
           </p>
+          <p class="highlights">
+            <strong>Highlights:</strong> nested schema extraction, normalization, JSON file outputs.
+          </p>
           <div class="card-actions">
             <a class="link" href="#" onclick="return false;">Repo (add link)</a>
             <a class="link" href="#" onclick="return false;">Write-up (add link)</a>
@@ -163,6 +174,9 @@ $ npm run cypress:run
           <p>
             Built maintainable E2E coverage for core flows with reusable helpers, clear assertions, and reporting.
           </p>
+          <p class="highlights">
+            <strong>Highlights:</strong> reusable commands, clean assertions, regression workflows.
+          </p>
           <div class="card-actions">
             <a class="link" href="#" onclick="return false;">Repo (add link)</a>
             <a class="link" href="#" onclick="return false;">Report (add link)</a>
@@ -177,6 +191,9 @@ $ npm run cypress:run
           <h3>Pipeline Integration</h3>
           <p>
             Integrated automated tests into CI for faster feedback and higher release confidence with reliable runs.
+          </p>
+          <p class="highlights">
+            <strong>Highlights:</strong> smoke vs regression split, pipeline gating, reporting.
           </p>
           <div class="card-actions">
             <a class="link" href="#" onclick="return false;">Jenkinsfile (add link)</a>
@@ -221,7 +238,7 @@ $ npm run cypress:run
     <!-- EXPERIENCE -->
     <section id="experience" class="section">
       <div class="section-head">
-        <h2>Experience Snapshot</h2>
+        <h2>Experience</h2>
         <p>Short and scannable. You can expand later if you want.</p>
       </div>
 
