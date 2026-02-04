@@ -1,790 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manuel Adames - Software QA & Automation Engineer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manuel Adames | Software QA & Automation Engineer</title>
+
   <style>
-    /* CSS Reset & Base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --background: #fafafa;
+      --foreground: #171717;
+      --muted: #737373;
+      --border: #e5e5e5;
+      --accent: #0a0a0a;
+      --chip: #f5f5f5;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #0f172a;
-      color: #e2e8f0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
       line-height: 1.6;
       min-height: 100vh;
     }
 
     a {
-      color: #5eead4;
-      text-decoration: none;
-      transition: color 0.2s ease;
+      color: var(--foreground);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+      transition: all 0.2s ease;
     }
-
     a:hover {
-      color: #99f6e4;
+      text-decoration-color: var(--foreground);
     }
 
-    /* Layout */
     .container {
-      max-width: 1200px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 24px;
     }
 
-    .main-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 4rem;
-      padding: 3rem 0;
+    /* Header */
+    header {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
     }
 
-    @media (min-width: 1024px) {
-      .main-layout {
-        grid-template-columns: 380px 1fr;
-        gap: 6rem;
-        padding: 5rem 0;
-      }
+    .header-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
     }
 
-    /* Sidebar */
-    .sidebar {
-      position: relative;
+    .profile-image {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      background-color: #f5f5f5;
     }
 
-    @media (min-width: 1024px) {
-      .sidebar {
-        position: sticky;
-        top: 5rem;
-        height: fit-content;
-      }
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .name {
-      font-size: 2.75rem;
+      font-size: 2rem;
       font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 0.5rem;
       letter-spacing: -0.02em;
+      margin-bottom: 8px;
     }
 
     .title {
-      font-size: 1.25rem;
-      color: #5eead4;
-      margin-bottom: 1.5rem;
+      font-size: 1.125rem;
+      color: var(--muted);
       font-weight: 500;
+      margin-bottom: 24px;
     }
 
-    .intro {
-      color: #94a3b8;
-      margin-bottom: 2.5rem;
+    .tagline {
       font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
     }
 
-    /* Navigation */
-    .nav {
-      display: none;
-    }
-
-    @media (min-width: 1024px) {
-      .nav {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        margin-bottom: 3rem;
-      }
-    }
-
-    .nav-link {
+    /* Nav */
+    nav {
       display: flex;
-      align-items: center;
-      gap: 1rem;
-      color: #64748b;
-      font-size: 0.75rem;
+      gap: 32px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-decoration: none;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 0.5rem 0;
-      transition: all 0.2s ease;
-    }
-
-    .nav-link:hover {
-      color: #f8fafc;
-    }
-
-    .nav-line {
-      width: 2rem;
-      height: 1px;
-      background-color: #475569;
-      transition: all 0.2s ease;
-    }
-
-    .nav-link:hover .nav-line {
-      width: 4rem;
-      background-color: #f8fafc;
-    }
-
-    /* Social Links */
-    .social-links {
-      display: flex;
-      gap: 1.25rem;
-      margin-top: 2rem;
-    }
-
-    .social-link {
-      color: #64748b;
       transition: color 0.2s ease;
     }
 
-    .social-link:hover {
-      color: #f8fafc;
+    nav a:hover { color: var(--foreground); }
+
+    /* Sections */
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    .social-link svg {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-
-    /* Main Content */
-    .content-section {
-      margin-bottom: 6rem;
-    }
+    section:last-of-type { border-bottom: none; }
 
     .section-title {
       font-size: 0.75rem;
-      font-weight: 600;
+      text-transform: uppercase;
       letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #f8fafc;
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-weight: 700;
     }
 
-    @media (min-width: 1024px) {
-      .section-title {
-        display: none;
-      }
+    .text p {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--foreground);
+      margin-bottom: 16px;
+    }
+    .text p:last-child { margin-bottom: 0; }
+
+    .highlight {
+      font-weight: 700;
+      color: var(--accent);
     }
 
-    /* About Section */
-    .about-text {
-      color: #94a3b8;
-      font-size: 1rem;
-      line-height: 1.75;
-    }
-
-    .about-text p {
-      margin-bottom: 1rem;
-    }
-
-    .about-text strong {
-      color: #f8fafc;
-      font-weight: 500;
-    }
-
-    /* Experience Card */
-    .experience-card {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      margin-bottom: 1rem;
-      transition: background-color 0.2s ease;
-    }
-
-    @media (min-width: 640px) {
-      .experience-card {
-        grid-template-columns: 140px 1fr;
-        gap: 1.5rem;
-      }
-    }
-
-    .experience-card:hover {
-      background-color: rgba(30, 41, 59, 0.5);
-    }
-
-    .experience-date {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #64748b;
-      padding-top: 0.25rem;
-    }
-
-    .experience-title {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #f8fafc;
-      margin-bottom: 0.25rem;
-    }
-
-    .experience-company {
-      color: #5eead4;
-    }
-
-    .experience-description {
-      color: #94a3b8;
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-      line-height: 1.6;
-    }
-
-    /* Skills Tags */
-    .skills-container {
+    /* Chips */
+    .chip-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
+      gap: 10px;
+      margin-top: 22px;
     }
 
-    .skill-tag {
-      padding: 0.375rem 0.875rem;
-      background-color: rgba(94, 234, 212, 0.1);
-      color: #5eead4;
-      font-size: 0.75rem;
-      font-weight: 500;
-      border-radius: 9999px;
-    }
-
-    /* Skills Section */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-
-    @media (min-width: 640px) {
-      .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .skill-category h4 {
-      font-size: 0.875rem;
+    .chip {
+      font-size: 0.8125rem;
+      padding: 8px 14px;
+      background-color: var(--chip);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--foreground);
       font-weight: 600;
-      color: #f8fafc;
-      margin-bottom: 1rem;
+      white-space: nowrap;
     }
 
-    .skill-list {
-      list-style: none;
+    /* Experience */
+    .xp-item {
+      padding: 18px 0;
+      border-top: 1px solid var(--border);
     }
+    .xp-item:first-of-type { border-top: none; padding-top: 0; }
 
-    .skill-list li {
-      color: #94a3b8;
-      font-size: 0.875rem;
-      padding: 0.375rem 0;
-      transition: color 0.2s ease;
-    }
-
-    .skill-list li:hover {
-      color: #5eead4;
-    }
-
-    /* Projects Section */
-    .project-card {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      margin-bottom: 1rem;
-      transition: background-color 0.2s ease;
-      border: 1px solid transparent;
-    }
-
-    @media (min-width: 640px) {
-      .project-card {
-        grid-template-columns: 120px 1fr;
-        gap: 1.5rem;
-      }
-    }
-
-    .project-card:hover {
-      background-color: rgba(30, 41, 59, 0.5);
-      border-color: rgba(94, 234, 212, 0.1);
-    }
-
-    .project-icon {
-      width: 100px;
-      height: 60px;
-      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-      border-radius: 0.5rem;
+    .xp-top {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #5eead4;
-      font-size: 0.75rem;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .xp-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .xp-company {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .xp-dates {
+      font-size: 0.85rem;
+      color: var(--muted);
       font-weight: 600;
-      letter-spacing: 0.05em;
+    }
+
+    .xp-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    /* Projects */
+    .project-item {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .project-title {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #f8fafc;
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .project-links {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
-    .project-title svg {
-      width: 1rem;
-      height: 1rem;
-      color: #64748b;
-      transition: transform 0.2s ease, color 0.2s ease;
+    .project-link {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+      transition: all 0.2s ease;
+      font-weight: 700;
     }
-
-    .project-card:hover .project-title svg {
-      transform: translate(2px, -2px);
-      color: #5eead4;
+    .project-link:hover {
+      color: var(--foreground);
+      text-decoration-color: var(--foreground);
     }
 
     .project-description {
-      color: #94a3b8;
-      font-size: 0.9rem;
-      margin-top: 0.25rem;
-      line-height: 1.6;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      padding: 5px 10px;
+      background-color: var(--chip);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 700;
     }
 
     /* Certifications */
-    .cert-list {
-      list-style: none;
+    .cert-list { list-style: none; display: grid; gap: 12px; }
+    .cert {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+    }
+    .cert-name { font-weight: 800; margin-bottom: 4px; }
+    .cert-issuer { color: var(--muted); font-size: 0.9rem; font-weight: 600; }
+
+    /* Contact */
+    .contact-intro {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      margin-bottom: 22px;
+      color: var(--foreground);
     }
 
-    .cert-item {
-      padding: 1rem 1.5rem;
-      border-radius: 0.75rem;
-      margin-bottom: 0.5rem;
-      transition: background-color 0.2s ease;
-    }
-
-    .cert-item:hover {
-      background-color: rgba(30, 41, 59, 0.5);
-    }
-
-    .cert-name {
-      font-weight: 500;
-      color: #f8fafc;
-      margin-bottom: 0.25rem;
-    }
-
-    .cert-issuer {
-      font-size: 0.875rem;
-      color: #64748b;
-    }
-
-    /* Contact Section */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    @media (min-width: 640px) {
-      .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      background-color: rgba(30, 41, 59, 0.3);
-      border-radius: 0.75rem;
-      transition: background-color 0.2s ease;
-    }
-
-    .contact-item:hover {
-      background-color: rgba(30, 41, 59, 0.6);
-    }
-
-    .contact-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      background-color: rgba(94, 234, 212, 0.1);
-      border-radius: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #5eead4;
-    }
-
-    .contact-icon svg {
-      width: 1.25rem;
-      height: 1.25rem;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .contact-label {
-      font-size: 0.75rem;
-      color: #64748b;
-      margin-bottom: 0.125rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      min-width: 90px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
     }
 
-    .contact-value {
-      color: #f8fafc;
-      font-weight: 500;
+    .contact-link {
+      font-size: 0.98rem;
+      color: var(--foreground);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s ease;
+      font-weight: 600;
     }
 
     /* Footer */
-    .footer {
-      padding: 3rem 0;
-      border-top: 1px solid #1e293b;
-      margin-top: 4rem;
-    }
-
-    .footer-text {
-      color: #64748b;
-      font-size: 0.875rem;
+    footer {
+      padding: 44px 0;
       text-align: center;
     }
 
-    .footer-text a {
-      color: #94a3b8;
+    footer p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      header { padding: 52px 0 40px; }
+      .header-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 22px;
+      }
+      .profile-image { width: 105px; height: 105px; }
+      .name { font-size: 1.8rem; }
+      .title { font-size: 1.02rem; }
+      section { padding: 48px 0; }
+      nav { gap: 18px; }
+      .project-header { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <div class="main-layout">
 
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <h1 class="name">Manuel Adames</h1>
-        <p class="title">Software QA & Automation Engineer</p>
-        <p class="intro">
-          QA & Automation Engineer with 4+ years of experience in end-to-end web test automation and process automation.
-          Strong in Cypress, Playwright, Stagehand, Selenium-based RPA, API testing, and CI/CD with Jenkins + Git.
-        </p>
-
-        <nav class="nav">
-          <a href="#about" class="nav-link"><span class="nav-line"></span>About</a>
-          <a href="#experience" class="nav-link"><span class="nav-line"></span>Experience</a>
-          <a href="#skills" class="nav-link"><span class="nav-line"></span>Skills</a>
-          <a href="#projects" class="nav-link"><span class="nav-line"></span>Projects</a>
-          <a href="#certifications" class="nav-link"><span class="nav-line"></span>Certifications</a>
-          <a href="#contact" class="nav-link"><span class="nav-line"></span>Contact</a>
-        </nav>
-
-        <div class="social-links">
-          <a href="https://github.com/manueladames" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-          </a>
-
-          <a href="https://linkedin.com/in/manueladames" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-
-          <a href="mailto:manuel.adames88@gmail.com" class="social-link" aria-label="Email">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-            </svg>
-          </a>
+    <header>
+      <div class="header-content">
+        <div class="profile-image">
+          <!-- Put profile.jpg in the same folder as index.html -->
+          <img src="profile.jpg" alt="Manuel Adames" />
         </div>
-      </aside>
 
-      <!-- Main Content -->
-      <main>
-        <!-- About -->
-        <section id="about" class="content-section">
-          <h2 class="section-title">About</h2>
-          <div class="about-text">
-            <p>
-              I'm a <strong>Software QA & Automation Engineer</strong> with over <strong>4 years</strong> of experience in software
-              quality assurance, specializing in <strong>end-to-end web test automation</strong> and <strong>process automation</strong>.
-            </p>
-            <p>
-              I build and maintain automation suites using <strong>Cypress</strong> and <strong>Playwright</strong>, and I’ve also
-              automated browser workflows with <strong>Stagehand</strong> and <strong>Selenium-based RPA</strong>. I’m strong with
-              <strong>DOM analysis</strong> and selector strategy (<strong>XPath/CSS</strong>) to keep tests stable and reduce flakiness.
-            </p>
-            <p>
-              I’m experienced across the full testing lifecycle: requirements analysis, test planning, execution, and defect tracking.
-              I also integrate automation into <strong>CI pipelines (Jenkins)</strong> to speed up feedback and release confidence.
-            </p>
+        <div class="header-text">
+          <h1 class="name">Manuel Adames</h1>
+          <p class="title">Software QA & Automation Engineer</p>
+          <p class="tagline">
+            QA &amp; Automation Engineer with 4+ years of experience in end-to-end web test automation and process automation.
+            Strong in Cypress, Playwright, Stagehand, Selenium-based RPA, API testing, and CI/CD with Jenkins + Git.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="text">
+        <p>
+          I'm a <span class="highlight">Software QA &amp; Automation Engineer</span> with over
+          <span class="highlight">4 years</span> of experience in software quality assurance, specializing in
+          <span class="highlight">end-to-end web test automation</span> and <span class="highlight">process automation</span>.
+        </p>
+        <p>
+          I build and maintain automation suites using <span class="highlight">Cypress</span> and
+          <span class="highlight">Playwright</span>, and I’ve also automated browser workflows with
+          <span class="highlight">Stagehand</span> and <span class="highlight">Selenium-based RPA</span>.
+          I’m strong with <span class="highlight">DOM analysis</span> and selector strategy
+          (<span class="highlight">XPath/CSS</span>) to keep tests stable and reduce flakiness.
+        </p>
+        <p>
+          I’m experienced across the full testing lifecycle: requirements analysis, test planning, execution, and defect tracking.
+          I also integrate automation into <span class="highlight">CI pipelines (Jenkins)</span> to speed up feedback and release confidence.
+        </p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+
+      <div class="xp-item">
+        <div class="xp-top">
+          <div class="xp-role">Software QA Engineer · <span class="xp-company">GBH Solutions</span></div>
+          <div class="xp-dates">May 2022 — Present</div>
+        </div>
+        <p class="xp-desc">
+          Performed full software testing lifecycle including requirements analysis, test strategy, planning, execution,
+          and documentation. Translated business and technical requirements into structured test plans and scenarios.
+          Managed defects through validation and tracking. Developed and maintained automated E2E suites using Cypress,
+          built Selenium-based RPA solutions, and created browser automation workflows using Playwright and Stagehand
+          for dynamic form handling, extraction, and process automation. Expanded automation coverage and integrated
+          testing into CI pipelines using Jenkins.
+        </p>
+        <div class="chip-row">
+          <span class="chip">Cypress</span>
+          <span class="chip">Playwright</span>
+          <span class="chip">Stagehand</span>
+          <span class="chip">Selenium RPA</span>
+          <span class="chip">Jenkins</span>
+          <span class="chip">XPath/CSS</span>
+        </div>
+      </div>
+
+      <div class="xp-item">
+        <div class="xp-top">
+          <div class="xp-role">IT Service Dispatcher · <span class="xp-company">Xplor Solutions / MyITCrew</span></div>
+          <div class="xp-dates">Nov 2021 — May 2022</div>
+        </div>
+        <p class="xp-desc">
+          Managed ticket triage and incident routing, ensuring efficient assignment of issues to appropriate technical teams.
+          Coordinated communication across departments to streamline issue resolution and improve response times.
+          Contributed to process improvements for ticket handling and cross-team support workflows.
+        </p>
+        <div class="chip-row">
+          <span class="chip">Ticket Triage</span>
+          <span class="chip">Incident Routing</span>
+          <span class="chip">Coordination</span>
+        </div>
+      </div>
+
+      <div class="xp-item">
+        <div class="xp-top">
+          <div class="xp-role">IT Consultant · <span class="xp-company">K-MAR SRL</span></div>
+          <div class="xp-dates">Feb 2019 — May 2019</div>
+        </div>
+        <p class="xp-desc">
+          Performed maintenance and troubleshooting of company systems and hardware infrastructure.
+          Diagnosed and resolved system and application faults, conducted security reviews, produced technical reports,
+          and provided technical support to employees. Analyzed technical requirements and constraints to support IT strategy.
+        </p>
+        <div class="chip-row">
+          <span class="chip">Troubleshooting</span>
+          <span class="chip">Security Reviews</span>
+          <span class="chip">Technical Reporting</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+
+      <div class="chip-row">
+        <span class="chip">Cypress</span>
+        <span class="chip">Playwright</span>
+        <span class="chip">Stagehand</span>
+        <span class="chip">Selenium-based RPA</span>
+        <span class="chip">API Testing (Postman/Insomnia)</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">Python</span>
+        <span class="chip">SQL</span>
+        <span class="chip">Jenkins</span>
+        <span class="chip">GitHub / GitLab</span>
+        <span class="chip">JIRA</span>
+        <span class="chip">TestCaseLab</span>
+        <span class="chip">Testomat</span>
+        <span class="chip">XPath/CSS</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="project-item">
+        <div class="project-header">
+          <h3 class="project-title">Playwright Automation – SauceDemo (POM)</h3>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/manueladames/Playwright-Sauce-Demo" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
-        </section>
+        </div>
+        <p class="project-description">
+          End-to-end Playwright + TypeScript automation suite for the SauceDemo e-commerce site, built with Page Object Model (POM) and modern QA best practices.
+          <br />
+          <span style="color: var(--muted); font-weight: 600;">Demo site:</span> https://www.saucedemo.com/inventory.html
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Playwright</span>
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">POM</span>
+          <span class="project-tag">E2E</span>
+        </div>
+      </div>
 
-        <!-- Experience -->
-        <section id="experience" class="content-section">
-          <h2 class="section-title">Experience</h2>
-
-          <div class="experience-card">
-            <div class="experience-date">May 2022 — Present</div>
-            <div>
-              <h3 class="experience-title">Software QA Engineer · <span class="experience-company">GBH Solutions</span></h3>
-              <p class="experience-description">
-                Performed full software testing lifecycle including requirements analysis, test strategy, planning, execution,
-                and documentation. Translated business and technical requirements into structured test plans and scenarios.
-                Managed defects through validation and tracking. Developed and maintained automated E2E suites using Cypress,
-                built Selenium-based RPA solutions, and created browser automation workflows using Playwright and Stagehand
-                for dynamic form handling, extraction, and process automation. Expanded automation coverage and integrated
-                testing into CI pipelines using Jenkins.
-              </p>
-              <div class="skills-container">
-                <span class="skill-tag">Cypress</span>
-                <span class="skill-tag">Playwright</span>
-                <span class="skill-tag">Stagehand</span>
-                <span class="skill-tag">Selenium RPA</span>
-                <span class="skill-tag">Jenkins</span>
-                <span class="skill-tag">XPath/CSS</span>
-              </div>
-            </div>
+      <div class="project-item">
+        <div class="project-header">
+          <h3 class="project-title">Cypress Automation – To Do List Application</h3>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/manueladames/cypress-to-do-list-repo/tree/main" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="project-link" href="https://todolist.james.am/#/" target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
+        </div>
+        <p class="project-description">
+          End-to-end automated tests written in Cypress for a To Do List web application, demonstrating QA automation practices:
+          functional UI testing, validation + edge-case coverage, test-case traceability, smoke vs regression tagging, and a clean maintainable Cypress structure.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Cypress</span>
+          <span class="project-tag">E2E</span>
+          <span class="project-tag">UI Testing</span>
+          <span class="project-tag">Smoke</span>
+          <span class="project-tag">Regression</span>
+        </div>
+      </div>
 
-          <div class="experience-card">
-            <div class="experience-date">Nov 2021 — May 2022</div>
-            <div>
-              <h3 class="experience-title">IT Service Dispatcher · <span class="experience-company">Xplor Solutions / MyITCrew</span></h3>
-              <p class="experience-description">
-                Managed ticket triage and incident routing, ensuring efficient assignment of issues to appropriate technical teams.
-                Coordinated communication across departments to streamline issue resolution and improve response times.
-                Contributed to process improvements for ticket handling and cross-team support workflows.
-              </p>
-              <div class="skills-container">
-                <span class="skill-tag">Ticket Triage</span>
-                <span class="skill-tag">Incident Routing</span>
-                <span class="skill-tag">Coordination</span>
-              </div>
-            </div>
+      <div class="project-item">
+        <div class="project-header">
+          <h3 class="project-title">Structured Data Extraction (Stagehand)</h3>
+          <div class="project-links">
+            <!-- If/when you have a repo link, drop it here -->
+            <span class="project-link" style="text-decoration: none; color: var(--muted);">Repo: coming soon</span>
           </div>
+        </div>
+        <p class="project-description">
+          Extracted nested structured JSON from dynamic forms/apps, handling repeated sections, normalization, and file outputs.
+          Focused on stable selectors, DOM analysis, and clean schema validation.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Stagehand</span>
+          <span class="project-tag">Zod</span>
+          <span class="project-tag">JSON</span>
+          <span class="project-tag">DOM</span>
+        </div>
+      </div>
+    </section>
 
-          <div class="experience-card">
-            <div class="experience-date">Feb 2019 — May 2019</div>
-            <div>
-              <h3 class="experience-title">IT Consultant · <span class="experience-company">K-MAR SRL</span></h3>
-              <p class="experience-description">
-                Performed maintenance and troubleshooting of company systems and hardware infrastructure.
-                Diagnosed and resolved system and application faults, conducted security reviews, produced technical reports,
-                and provided technical support to employees. Analyzed technical requirements and constraints to support IT strategy.
-              </p>
-              <div class="skills-container">
-                <span class="skill-tag">Troubleshooting</span>
-                <span class="skill-tag">Security Reviews</span>
-                <span class="skill-tag">Technical Reporting</span>
-              </div>
-            </div>
-          </div>
-        </section>
+    <section id="certifications">
+      <h2 class="section-title">Certifications</h2>
+      <ul class="cert-list">
+        <li class="cert">
+          <div class="cert-name">ISTQB® Certified Tester — Foundation Level (CTFL)</div>
+          <div class="cert-issuer">ISTQB</div>
+        </li>
+      </ul>
+    </section>
 
-        <!-- Skills -->
-        <section id="skills" class="content-section">
-          <h2 class="section-title">Skills</h2>
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h4>Automation & Testing</h4>
-              <ul class="skill-list">
-                <li>Cypress</li>
-                <li>Playwright</li>
-                <li>Stagehand</li>
-                <li>Selenium-based RPA</li>
-                <li>API Testing (Postman/Insomnia)</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h4>Programming & Data</h4>
-              <ul class="skill-list">
-                <li>JavaScript</li>
-                <li>TypeScript</li>
-                <li>Python</li>
-                <li>SQL</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h4>CI/CD & Tools</h4>
-              <ul class="skill-list">
-                <li>Jenkins</li>
-                <li>GitHub / GitLab</li>
-                <li>JIRA</li>
-                <li>TestCaseLab</li>
-                <li>Testomat</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects" class="content-section">
-          <h2 class="section-title">Projects</h2>
-
-          <!-- Playwright Automation – SauceDemo (POM) -->
-          <a href="https://github.com/manueladames/Playwright-Sauce-Demo"
-             class="project-card"
-             target="_blank"
-             rel="noopener noreferrer">
-            <div class="project-icon">POM</div>
-            <div>
-              <h3 class="project-title">
-                Playwright Automation – SauceDemo (POM)
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
-                </svg>
-              </h3>
-              <p class="project-description">
-                End-to-end Playwright + TypeScript automation suite for the SauceDemo e-commerce site, built with Page Object Model (POM) and modern QA best practices.
-                <br>
-                <span style="color:#64748b;">Demo site:</span> saucedemo.com
-              </p>
-              <div class="skills-container">
-                <span class="skill-tag">Playwright</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">POM</span>
-                <span class="skill-tag">E2E</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Structured Data Extraction (Stagehand) -->
-          <a href="#" class="project-card" onclick="return false;">
-            <div class="project-icon">DATA</div>
-            <div>
-              <h3 class="project-title">
-                Structured Data Extraction (Stagehand)
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
-                </svg>
-              </h3>
-              <p class="project-description">
-                Extracted nested structured JSON from dynamic forms/apps, handling repeated sections, normalization, and file outputs.
-              </p>
-              <div class="skills-container">
-                <span class="skill-tag">Stagehand</span>
-                <span class="skill-tag">Zod</span>
-                <span class="skill-tag">JSON</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Cypress Automation – To Do List Application -->
-<a href="https://github.com/manueladames/cypress-to-do-list-repo/tree/main"
-   class="project-card"
-   target="_blank"
-   rel="noopener noreferrer">
-  <div class="project-icon">CYP</div>
-  <div>
-    <h3 class="project-title">
-      Cypress Automation – To Do List Application
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
-      </svg>
-    </h3>
-
-    <p class="project-description">
-      End-to-end automated tests written in Cypress for a To Do List web application, demonstrating real QA automation practices:
-      functional UI testing, validation + edge-case coverage, test-case traceability, smoke vs regression tagging, and a clean maintainable Cypress structure.
-      <br>
-      <span style="color:#64748b;">Demo site:</span> https://todolist.james.am/#/
-    </p>
-
-    <div class="skills-container">
-      <span class="skill-tag">Cypress</span>
-      <span class="skill-tag">E2E</span>
-      <span class="skill-tag">UI Testing</span>
-      <span class="skill-tag">Smoke</span>
-      <span class="skill-tag">Regression</span>
-    </div>
-  </div>
-</a>
-
-        </section>
-
-        <!-- Certifications -->
-        <section id="certifications" class="content-section">
-          <h2 class="section-title">Certifications</h2>
-          <ul class="cert-list">
-            <li class="cert-item">
-              <div class="cert-name">ISTQB® Certified Tester — Foundation Level (CTFL)</div>
-              <div class="cert-issuer">ISTQB</div>
-            </li>
-          </ul>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="content-section">
-          <h2 class="section-title">Contact</h2>
-          <div class="contact-grid">
-
-            <a class="contact-item" href="mailto:manuel.adames88@gmail.com">
-              <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="contact-label">Email</div>
-                <div class="contact-value">manuel.adames88@gmail.com</div>
-              </div>
-            </a>
-
-            <a class="contact-item" href="tel:+18296801129">
-              <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.86.31 1.7.57 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.14a2 2 0 0 1 2.11-.45c.8.26 1.64.45 2.5.57A2 2 0 0 1 22 16.92Z"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="contact-label">Phone</div>
-                <div class="contact-value">(829) 680-1129</div>
-              </div>
-            </a>
-
-            <a class="contact-item" href="https://github.com/manueladames" target="_blank" rel="noopener noreferrer">
-              <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </div>
-              <div>
-                <div class="contact-label">GitHub</div>
-                <div class="contact-value">github.com/manueladames</div>
-              </div>
-            </a>
-
-            <a class="contact-item" href="https://linkedin.com/in/manueladames" target="_blank" rel="noopener noreferrer">
-              <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </div>
-              <div>
-                <div class="contact-label">LinkedIn</div>
-                <div class="contact-value">linkedin.com/in/manueladames</div>
-              </div>
-            </a>
-
-          </div>
-        </section>
-      </main>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <p class="footer-text">
-        Manuel Adames
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="contact-intro">
+        Want to connect or collaborate? Reach out — I’m open to QA opportunities, automation challenges, and networking with other engineers.
       </p>
+
+      <div class="contact-links">
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a class="contact-link" href="mailto:manuel.adames88@gmail.com">manuel.adames88@gmail.com</a>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-label">Phone</span>
+          <a class="contact-link" href="tel:+18296801129">(829) 680-1129</a>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-label">GitHub</span>
+          <a class="contact-link" href="https://github.com/manueladames" target="_blank" rel="noopener noreferrer">github.com/manueladames</a>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-label">LinkedIn</span>
+          <a class="contact-link" href="https://linkedin.com/in/manueladames" target="_blank" rel="noopener noreferrer">linkedin.com/in/manueladames</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Manuel Adames. All rights reserved.</p>
     </footer>
+
   </div>
 </body>
 </html>
-
